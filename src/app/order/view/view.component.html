@@ -1,0 +1,45 @@
+<div class="card">
+    <div class="card-body">
+
+
+        <table class="table table-bordered table-sm">
+            <thead>
+                <tr>
+                    <th>Order Id</th>
+                    <th>Date</th>
+                    <th>Ordered Product</th>
+                    <th>Product Amount</th>
+                    <th>Total Price</th>
+                    <th>Location</th>
+                    <th>Order Status</th>
+                    <th>Actions</th>                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let order of orders">
+                    <td>{{order.id}}</td>
+                    <td>{{order.orderStartDate}}</td>
+                    <td>{{order.product.name}}</td>
+                    <td>{{order.productAmount}}</td>
+                    <td>{{order.price}}</td>
+                    <td>{{order.location}}</td>
+                    <td><span class="badge badge-primary">{{order.orderStatus}}</span></td>
+                    <td>Cancel</td>
+
+
+                   
+                </tr>
+
+            </tbody>
+        </table>
+        <!--nav>
+            <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="#">Prev</a></li>
+                <li class="page-item" *ngFor="let p of pages; let i=index">
+                    <a class="page-link" href="#" (click)="setPage(i, $event)">{{i+1}}</a>
+                </li>
+            </ul>
+        </nav-->
+    </div>
+
+</div>

@@ -1,0 +1,80 @@
+<div class="card">
+    <div class="card-header">
+        <strong>Stock</strong>
+        <small>Update</small>
+    </div>
+    <article class="card-body">
+        <div class="row">
+            <aside class="col-md-6 border-right">
+                <img src="../../../assets/img/svg/fork.svg">
+            </aside>
+            <aside class="col-md-6">
+                <dl class="item-property">
+                    <dt>Product Name</dt>
+                    <dd>{{product.name}}</dd>
+                </dl>
+
+                <dl class="item-property">
+                    <dt>Product Type</dt>
+                    <dd>{{product.type}}</dd>
+                </dl>
+
+
+
+                <div class="form-group">
+                    <label for="stockType">Stock Type</label>
+                    <select class="form-control" id="stockType" [(ngModel)]="stock.stockType" name="productStockType"
+                        #productStockType="ngModel">
+                        <option value="ANYTIME_AVAILABLE">ANYTIME AVAILABLE</option>
+                        <option value="INSTANT_PRODUCTION">INSTANT_PRODUCTION</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="maxQuantity">Maximum quantity(for a one time stock)</label>
+                    <input type="number" class="form-control" id="maxQuantity"
+                        placeholder="Quantity units will be considerd as previous given SI units."
+                        [(ngModel)]="stock.maximumQuantity" name="productStockMaximumQuantity"
+                        #productStockMaximumQuantity="ngModel">
+                </div>
+
+                <div class="form-group">
+                        <label for="maxQuantity">Current availability</label>
+                        <input type="number" class="form-control" id="curAvailability"
+                            placeholder="no of units available to buy"
+                            [(ngModel)]="stock.currentAvailability" name="productStockCurrentAvailability"
+                            #productStockCurrentAvailability="ngModel">
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="form-group col-sm-10">
+                            <label for="ava">Is available to sell?</label>
+                        </div>
+                        <div class="form-group col-sm-2">
+                            <label class="switch switch-3d switch-primary">
+                                <input type="checkbox" class="switch-input" id="ava"
+                                    [(ngModel)]="stock.isAvailableOnSell" name="productStockIsAvailableOnSell"
+                                    #productStockIsAvailableOnSell="ngModel" checked>
+                                <span class="switch-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+            </aside>
+        </div>
+
+
+        <!--/.row-->
+
+    </article>
+    <div class="card-footer">
+        <button type="button" class="btn btn-sm btn-primary" (click)="register()"><i class="fa fa-dot-circle-o"></i>
+            Update</button>
+        <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button>
+    </div>
+</div>

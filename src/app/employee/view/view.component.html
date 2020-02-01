@@ -1,0 +1,47 @@
+<h3>Employee List</h3>
+
+    <div class="card">
+        <div class="card-body">
+
+
+            <table class="table table-bordered table-sm">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Mobile</th>
+                        <th>Working Since</th>
+                        <th>Salary Type</th>
+                        <th>Salary Amount</th>
+                        <th>Actions</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let e of employees">
+                        <td>{{e.name}}</td>
+                        <td>{{e.email}}</td>
+                        <td>{{e.mobile}}</td>
+                        <td>{{e.workingSince}}</td>
+                        <td>{{e.salaryType}}</td>
+                        <td>{{e.salary}}</td>
+                        <td><button type="button" class="btn btn-sm btn-primary" (click)="viewEmployee(e.id)"><i class="fa fa-dot-circle-o"></i>
+                            View</button></td>
+
+
+                       
+                    </tr>
+
+                </tbody>
+            </table>
+            <!--nav>
+                <ul class="pagination">
+                    <li class="page-item"><a class="page-link" href="#">Prev</a></li>
+                    <li class="page-item" *ngFor="let p of pages; let i=index">
+                        <a class="page-link" href="#" (click)="setPage(i, $event)">{{i+1}}</a>
+                    </li>
+                </ul>
+            </nav-->
+        </div>
+
+    </div>

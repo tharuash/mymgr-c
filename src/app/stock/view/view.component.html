@@ -1,0 +1,49 @@
+<h3>Stock List</h3>
+
+    <div class="card">
+        <div class="card-body">
+
+
+            <table class="table table-bordered table-sm">
+                <thead>
+                    <tr>
+                        <th>Stock Id</th>
+                        <th>Product Name</th>
+                        <th>Stock Type</th>
+                        <th>Maximum Quantity</th>
+                        <th>Currently Available Quantity</th>
+                        <th>On Sell</th>
+                        <th>Actions</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let s of stock">
+                        <td>{{s.id}}</td>
+                        <td>{{s.name}}</td>
+                        <td>{{s.stockType}}</td>
+                        <td>{{s.maximumQuantity}}</td>
+                        <td>{{s.currentlyAvailable}}</td>
+                        <td><span class="badge badge-primary" *ngIf="s.isAvailableOnSell">Available</span>
+                            <span class="badge badge-danger" *ngIf="!s.isAvailableOnSell">Not Available</span>
+                        </td>
+                        <td><button type="button" class="btn btn-sm btn-primary" (click)="update(s.id)"><i class="fa fa-dot-circle-o"></i>
+                            Update</button></td>
+
+
+                       
+                    </tr>
+
+                </tbody>
+            </table>
+            <!--nav>
+                <ul class="pagination">
+                    <li class="page-item"><a class="page-link" href="#">Prev</a></li>
+                    <li class="page-item" *ngFor="let p of pages; let i=index">
+                        <a class="page-link" href="#" (click)="setPage(i, $event)">{{i+1}}</a>
+                    </li>
+                </ul>
+            </nav-->
+        </div>
+
+    </div>

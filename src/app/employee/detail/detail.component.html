@@ -1,0 +1,140 @@
+<div class="card">
+    <div class="card-header">
+        <strong>Employee</strong>
+        <small>Details</small>
+    </div>
+    <article class="card-body">
+        <div class="row">
+            <aside class="col-md-6 border-right">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-md-2">
+                        <div class="avatar">
+                            <img class="img-avatar" src="assets/img/avatars/1.jpg" alt="admin@bootstrapmaster.com">
+
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <p><strong>Mr. Austin</strong><span class="badge badge-primary">Currently Working</span></p>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <dl class="item-property">
+                            <dt>Email</dt>
+                            <dd>austin@gmail.com</dd>
+                        </dl>
+                        <dl class="item-property">
+                            <dt>Address</dt>
+                            <dd>austin@gmail.com</dd>
+                        </dl>
+                        <dl class="item-property">
+                            <dt>Salary Type</dt>
+                            <dd>austin@gmail.com</dd>
+                        </dl>
+                    </div>
+                    <div class="col-md-6">
+                        <dl class="item-property">
+                            <dt>Mobile</dt>
+                            <dd>austin@gmail.com</dd>
+                        </dl>
+                        <dl class="item-property">
+                            <dt>National Id</dt>
+                            <dd>austin@gmail.com</dd>
+                        </dl>
+                        <dl class="item-property">
+                            <dt>Salary</dt>
+                            <dd>austin@gmail.com</dd>
+                        </dl>
+                    </div>
+                </div>
+
+
+                <button type="button" class="btn btn-sm btn-primary" (click)="update()"><i class="fa fa-dot-circle-o"></i>
+                    Update</button>
+
+            </aside>
+            <aside class="col-md-6">
+                <dl class="item-property">
+                    <dt>Notes</dt>
+                    <dd>very good worker. very poor</dd>
+                </dl>
+
+                <br><br>
+                <h5>Statistics</h5>
+                <dl class="item-property">
+                    <p><strong>Working Since</strong> : 10 years </p>
+
+                </dl>
+                <dl class="item-property">
+                    <p><strong>Salary Paid Months</strong> : 45 month </p>
+
+                </dl>
+
+                <dl class="item-property">
+                    <p><strong>Total Paid(Salary)</strong> : $450 </p>
+
+                </dl>
+
+                <dl class="item-property">
+                    <p><strong>Other Payments</strong> : $480 </p>
+
+                </dl>
+
+                <dl class="item-property">
+                    <p><strong>Returns</strong> : $80 </p>
+
+                </dl>
+
+
+
+
+
+
+
+
+
+
+            </aside>
+        </div>
+
+
+        <!--/.row-->
+        <br>
+        <h3>Employee Transactions</h3>
+        <table class="table table-bordered table-sm">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Type</th>
+                        <th>Amount</th>
+                        <th>Description</th>
+                        <th>Actions</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let t of transactions">
+                        <td>{{t.transactionDate}}</td>
+                        <td>{{t.transactionTime}}</td>
+                        <td>{{t.transactionType}}</td>
+                        <td>{{t.amount}}</td>
+                        <td>{{t.description}}</td>
+                        <td><button type="button" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i>
+                            Edit</button></td>
+
+
+                       
+                    </tr>
+
+                </tbody>
+            </table>
+    </article>
+    <div class="card-footer">
+        
+        
+    </div>
+</div>

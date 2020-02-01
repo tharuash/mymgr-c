@@ -1,0 +1,35 @@
+<h3>Employees' Transactions</h3>
+<div class="card">
+        <div class="card-body">
+        <table class="table table-bordered table-sm">
+                <thead>
+                    <tr>
+                        <th>Employee</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Type</th>
+                        <th>Amount</th>
+                        <th>Description</th>
+                        <th>Actions</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let t of transactions">
+                        <td>{{t.employee.name}}</td>
+                        <td>{{t.transactionDate}}</td>
+                        <td>{{t.transactionTime}}</td>
+                        <td>{{t.transactionType}}</td>
+                        <td>{{t.amount}}</td>
+                        <td>{{t.description}}</td>
+                        <td><button type="button" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i>
+                            Edit</button></td>
+
+
+                       
+                    </tr>
+
+                </tbody>
+            </table>
+            </div>
+        </div>
