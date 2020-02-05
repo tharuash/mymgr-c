@@ -4,15 +4,50 @@
         <small>Form</small>
     </div>
     <div class="card-body">
-        <div class="form-group">
+        <!--div class="form-group">
             <label for="name">Ordered Product</label>
             <select type="text" class="form-control" id="productName" [(ngModel)]="productName">
                     <option *ngFor="let p of productData" [value]="p.name">{{p.name}}</option>
             
             </select>
-        </div>
+        </div-->
 
-        <div class="form-group">
+        <table class="table table-bordered table-sm">
+                <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Stock Type</th>
+                        <th>Currently Available Quantity</th>
+                        <th>Unit Price</th>
+                        <th>Required Quantity</th>
+                        <th>Sub Total</th>    
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let s of orderProducts">
+                        <td>{{s.productName}}</td>
+                        <td>{{s.stockType}}</td>
+                        <td>{{s.availableQuantity}}</td>
+                        <td>{{s.unitPrice}}</td>
+                        <td><div class="form-group">
+                                <input type="number" class="form-control" id="req" [(ngModel)]="s.requiredQuantity" (keyup)="getQuantity($event, s.productId)"
+                name="req" #req="ngModel">
+                            
+                        </div></td>
+                        <td>{{s.subTotal}}
+                        </td>
+    
+
+
+                       
+                    </tr>
+
+                </tbody>
+            </table>
+
+        
+
+        <!--div class="form-group">
             <label for="status">Order Status</label>
             <select class="form-control" id="status" [(ngModel)]="order.orderStatus"
                 name="status" #status="ngModel">
@@ -20,7 +55,7 @@
                 <option value="OTHER_PAYMENT">Delivered</option>
                 <option value="OTHER_EARNING">Proceeding</option>
             </select>
-        </div>
+        </div-->
 
         <div class="form-group">
             <label for="exDate">Deadline</label>
@@ -42,14 +77,14 @@
 
         <div class="form-group">
             <label for="price">Order Price</label>
-            <input type="text" class="form-control" id="price" placeholder="Order Price" [(ngModel)]="order.price"
+            <input type="text" class="form-control" id="price" placeholder="Order Price" [(ngModel)]="order.totalPrice"
                 name="price" #price="ngModel">
         </div>
 
         <div class="form-group">
             <label for="location">Order Destination</label>
             <input type="text" class="form-control" id="location" placeholder="Destination Address"
-                [(ngModel)]="order.location" name="location" #location="ngModel">
+                [(ngModel)]="order.orderLocation" name="location" #location="ngModel">
         </div>
 
 
@@ -59,7 +94,7 @@
 
     </div>
     <div class="card-footer">
-        <button type="button" class="btn btn-sm btn-primary" (click)="register()"><i class="fa fa-dot-circle-o"></i>
+        <button type="button" class="btn btn-sm btn-primary" (click)="placeOrder()"><i class="fa fa-dot-circle-o"></i>
             Place</button>
         <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i>Reset</button>
     </div>

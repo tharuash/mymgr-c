@@ -13,8 +13,8 @@
 
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <p><strong>Mr. Austin</strong><span class="badge badge-primary">Currently Working</span></p>
+                    <div class="col-md-6">
+                        <p><strong>{{employee.name}}</strong><span class="badge badge-primary">Currently Working</span></p>
 
                     </div>
 
@@ -24,48 +24,48 @@
                     <div class="col-md-6">
                         <dl class="item-property">
                             <dt>Email</dt>
-                            <dd>austin@gmail.com</dd>
+                            <dd>{{employee.email}}</dd>
                         </dl>
                         <dl class="item-property">
                             <dt>Address</dt>
-                            <dd>austin@gmail.com</dd>
+                            <dd>{{employee.address}}</dd>
                         </dl>
                         <dl class="item-property">
                             <dt>Salary Type</dt>
-                            <dd>austin@gmail.com</dd>
+                            <dd>{{employee.salaryType}}</dd>
                         </dl>
                     </div>
                     <div class="col-md-6">
                         <dl class="item-property">
                             <dt>Mobile</dt>
-                            <dd>austin@gmail.com</dd>
+                            <dd>{{employee.mobile}}</dd>
                         </dl>
                         <dl class="item-property">
                             <dt>National Id</dt>
-                            <dd>austin@gmail.com</dd>
+                            <dd>{{employee.nationalId}}</dd>
                         </dl>
                         <dl class="item-property">
                             <dt>Salary</dt>
-                            <dd>austin@gmail.com</dd>
+                            <dd>{{employee.salary}}</dd>
                         </dl>
                     </div>
                 </div>
 
 
-                <button type="button" class="btn btn-sm btn-primary" (click)="update()"><i class="fa fa-dot-circle-o"></i>
+                <button type="button" class="btn btn-sm btn-primary" (click)="update(employee.id)"><i class="fa fa-dot-circle-o"></i>
                     Update</button>
 
             </aside>
             <aside class="col-md-6">
                 <dl class="item-property">
                     <dt>Notes</dt>
-                    <dd>very good worker. very poor</dd>
+                    <dd>{{employee.notes}}</dd>
                 </dl>
 
                 <br><br>
                 <h5>Statistics</h5>
                 <dl class="item-property">
-                    <p><strong>Working Since</strong> : 10 years </p>
+                    <p><strong>Working Since</strong> : {{employee.workedSince}} </p>
 
                 </dl>
                 <dl class="item-property">

@@ -1,0 +1,114 @@
+<h3>Order {{order.id}}</h3>
+<div class="card">
+    <article class="card-body">
+        <div class="row">
+            <aside class="col-md-6 border-right">
+                <dl class="item-property">
+                    <dt>Order Expiration Date</dt>
+                    <dd>{{order.orderExpirationDate}}</dd>
+                </dl>
+
+                <dl class="item-property">
+                    <dt>Order Start Date</dt>
+                    <dd>{{order.orderStartDate}}</dd>
+                </dl>
+
+                <dl class="item-property">
+                    <dt>Order Destination</dt>
+                    <dd>{{order.orderLocation}}</dd>
+                </dl>
+
+                <dl class="item-property">
+                    <dt>Buyer Confirmation</dt>
+                    <dd><span *ngIf="order.buyerConfirmation" class="badge badge-primary">Confirmed.</span>
+                        <span *ngIf="!order.buyerConfirmation" class="badge badge-danger">Not Confirmed.</span></dd>
+                </dl>
+
+                <button type="button" *ngIf="order.buyerConfirmation" class="btn btn-sm btn-primary" (click)="buyerCancel(order.id)"><i class="fa fa-dot-circle-o"></i>
+                    Cancel</button>
+                    <button type="button" *ngIf="!order.buyerConfirmation" class="btn btn-sm btn-primary" (click)="buyerConfirm(order.id)"><i class="fa fa-dot-circle-o"></i>
+                        Confirm</button>
+
+
+
+            </aside>
+            <aside class="col-md-6">
+                <dl class="item-property">
+                    <dt>Total Price</dt>
+                    <dd>{{order.totalPrice}} USD</dd>
+                </dl>
+
+                <dl class="item-property">
+                    <dt>Order Status</dt>
+                    <dd>{{order.orderStatus}}</dd>
+                </dl>
+
+                <dl class="item-property">
+                    <dt>No of Different Products</dt>
+                    <dd>{{order.noOfProducts}}</dd>
+                </dl>
+
+                <dl class="item-property">
+                    <dt>Seller Confirmation</dt>
+                    <dd><span *ngIf="order.sellerConfirmation" class="badge badge-primary">Confirmed.</span>
+                        <span *ngIf="!order.sellerConfirmation" class="badge badge-danger">Not Confirmed.</span></dd>
+                </dl>
+
+                <button type="button" *ngIf="order.sellerConfirmation" class="btn btn-sm btn-primary" (click)="sellerCancel(order.id)"><i class="fa fa-dot-circle-o"></i>
+                    Cancel</button>
+                    <button type="button" *ngIf="!order.sellerConfirmation" class="btn btn-sm btn-primary" (click)="sellerConfirm(order.id)"><i class="fa fa-dot-circle-o"></i>
+                        Confirm</button>
+            </aside>
+        </div>
+
+
+        <!--/.row-->
+
+    </article>
+</div>
+
+<h3>Products Inside Order {{order.id}}</h3>
+
+<div class="card">
+    <div class="card-body">
+
+
+        <table class="table table-bordered table-sm">
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Required Quantity</th>
+                    <th>Sub Total</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let op of orderProducts">
+                    <td>{{op.productName}}</td>
+                    <td>{{op.requiredQuantity}}</td>
+                    <td>{{op.subTotal}}</td>
+                </tr>
+
+            </tbody>
+        </table>
+        <!--nav>
+                <ul class="pagination">
+                    <li class="page-item"><a class="page-link" href="#">Prev</a></li>
+                    <li class="page-item" *ngFor="let p of pages; let i=index">
+                        <a class="page-link" href="#" (click)="setPage(i, $event)">{{i+1}}</a>
+                    </li>
+                </ul>
+            </nav-->
+    </div>
+
+    <div class="card-footer">
+        <button type="button" class="btn btn-sm btn-primary" (click)="update(order.id)"><i
+                class="fa fa-dot-circle-o"></i>
+            Update</button>
+        <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button>
+        <button type="button" class="btn btn-sm btn-success" (click)="delivery(order.id)"><i
+            class="fa fa-truck"></i>
+        Assign Delivery</button>
+    </div>
+
+</div>

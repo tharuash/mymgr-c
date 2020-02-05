@@ -42,7 +42,7 @@
                         <label for="maxQuantity">Current availability</label>
                         <input type="number" class="form-control" id="curAvailability"
                             placeholder="no of units available to buy"
-                            [(ngModel)]="stock.currentAvailability" name="productStockCurrentAvailability"
+                            [(ngModel)]="stock.availableQuantity" name="productStockCurrentAvailability"
                             #productStockCurrentAvailability="ngModel">
                 </div>
 
@@ -73,7 +73,7 @@
 
     </article>
     <div class="card-footer">
-        <button type="button" class="btn btn-sm btn-primary" (click)="register()"><i class="fa fa-dot-circle-o"></i>
+        <button type="button" class="btn btn-sm btn-primary" (click)="update(product.id)"><i class="fa fa-dot-circle-o"></i>
             Update</button>
         <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button>
     </div>

@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AddComponent } from './add/add.component';
 import { ViewComponent } from './view/view.component';
 import { DetailComponent } from './detail/detail.component';
+import { UpdateComponent } from './update/update.component';
 
 
 const routes: Routes = [
@@ -36,6 +37,13 @@ const routes: Routes = [
   {
     path: 'details/:id',
     component: DetailComponent,
+    data: {
+      title: 'Employee',
+    }
+  },
+  {
+    path: 'update/:id',
+    component: UpdateComponent,
     data: {
       title: 'Employee',
     }

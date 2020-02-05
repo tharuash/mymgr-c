@@ -48,9 +48,9 @@
         <div class="form-group">
             <label for="salaryType">Salary Type</label>
             <select class="form-control" id="salaryType" [(ngModel)]="employee.salaryType" name="salaryType" #salaryType="ngModel">
-                <option value="Hour Rate">Hour Rate</option>
-                <option value="Day Rate">Day Rate</option>
-                <option value="Monthly Rate">Monthly Rate</option>
+                <option value="HourRate">Hour Rate</option>
+                <option value="DayRate">Day Rate</option>
+                <option value="MonthlyRate">Monthly Rate</option>
             </select>
         </div>
 
@@ -64,7 +64,7 @@
 
     </div>
     <div class="card-footer">
-        <button type="button" class="btn btn-sm btn-primary" (click)="register()"><i class="fa fa-dot-circle-o"></i>
+        <button type="button" class="btn btn-sm btn-primary" (click)="addEmployee()"><i class="fa fa-dot-circle-o"></i>
             Register</button>
         <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i>Reset</button>
     </div>

@@ -6,11 +6,15 @@ export class Order {
     id: number;
     seller: User;
     product: Product;
+    orderedProducts = [];
     orderExpirationDate: Date;
     orderStartDate: Date;
     orderStartTime: Date;
-    price: number;
+    totalPrice: number;
     currencyType: string;
     orderStatus: string;
-    location: string;
+    orderLocation: string;
+    sellerConfirmation: boolean;
+    buyerConfirmation: boolean;
+    noOfProducts: number;
 }

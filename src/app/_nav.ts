@@ -84,12 +84,7 @@ export const navItems: INavData[] = [
     name: 'View Deliveries ',
     url: '/delivery/view',
     icon: 'icon-drop'
-  },
-  {
-    name: 'Assign Delivery',
-    url: '/delivery/assign',
-    icon: 'icon-drop'
-  },
+  }
   /*{
     title: true,
     name: 'Theme'

@@ -6,10 +6,11 @@ import { EmployeeRoutingModule } from './employee-routing.module';
 import { AddComponent } from './add/add.component';
 import { ViewComponent } from './view/view.component';
 import { DetailComponent } from './detail/detail.component';
+import { UpdateComponent } from './update/update.component';
 
 
 @NgModule({
-  declarations: [AddComponent, ViewComponent, DetailComponent],
+  declarations: [AddComponent, ViewComponent, DetailComponent, UpdateComponent],
   imports: [
     CommonModule,
     EmployeeRoutingModule,

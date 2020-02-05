@@ -1,0 +1,101 @@
+<div class="card">
+        <div class="card-header">
+            <strong>Order</strong>
+            <small>Form</small>
+        </div>
+        <div class="card-body">
+            <!--div class="form-group">
+                <label for="name">Ordered Product</label>
+                <select type="text" class="form-control" id="productName" [(ngModel)]="productName">
+                        <option *ngFor="let p of productData" [value]="p.name">{{p.name}}</option>
+                
+                </select>
+            </div-->
+    
+            <table class="table table-bordered table-sm">
+                    <thead>
+                        <tr>
+                            <th>Product Name</th>
+                            <th>Stock Type</th>
+                            <th>Currently Available Quantity</th>
+                            <th>Unit Price</th>
+                            <th>Required Quantity</th>
+                            <th>Sub Total</th>    
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let s of orderProducts">
+                            <td>{{s.productName}}</td>
+                            <td>{{s.stockType}}</td>
+                            <td>{{s.availableQuantity}}</td>
+                            <td>{{s.unitPrice}}</td>
+                            <td><div class="form-group">
+                                    <input type="number" class="form-control" id="req" [(ngModel)]="s.requiredQuantity" (keyup)="getQuantity($event, s.id)"
+                    name="req" #req="ngModel">
+                                
+                            </div></td>
+                            <td>{{s.subTotal}}
+                            </td>
+        
+    
+    
+                           
+                        </tr>
+    
+                    </tbody>
+                </table>
+    
+            
+    
+            <!--div class="form-group">
+                <label for="status">Order Status</label>
+                <select class="form-control" id="status" [(ngModel)]="order.orderStatus"
+                    name="status" #status="ngModel">
+                    <option value="SALARY_PAYMENT">Cancelled</option>
+                    <option value="OTHER_PAYMENT">Delivered</option>
+                    <option value="OTHER_EARNING">Proceeding</option>
+                </select>
+            </div-->
+    
+            <div class="form-group">
+                <label for="exDate">Deadline</label>
+                <input type="date" class="form-control" id="exDate" placeholder="Deadline"
+                    [(ngModel)]="order.orderExpirationDate" name="orderExpirationDate" #orderExpirationDate="ngModel">
+            </div>
+    
+            <div class="form-group">
+                <label for="stDate">Start Date</label>
+                <input type="date" class="form-control" id="stDate" placeholder="Ordered Date"
+                    [(ngModel)]="order.orderStartDate" name="orderStartDate" #orderStartDate="ngModel">
+            </div>
+    
+            <!--div class="form-group">
+                <label for="time">Time</label>
+                <input type="time" class="form-control" id="time" placeholder="Time"
+                    [(ngModel)]="transaction.transactionTime" name="transactionTime" #transactionTime="ngModel">
+            </div-->
+    
+            <div class="form-group">
+                <label for="price">Order Price</label>
+                <input type="text" class="form-control" id="price" placeholder="Order Price" [(ngModel)]="order.totalPrice"
+                    name="price" #price="ngModel">
+            </div>
+    
+            <div class="form-group">
+                <label for="location">Order Destination</label>
+                <input type="text" class="form-control" id="location" placeholder="Destination Address"
+                    [(ngModel)]="order.orderLocation" name="location" #location="ngModel">
+            </div>
+    
+    
+    
+    
+    
+    
+        </div>
+        <div class="card-footer">
+            <button type="button" class="btn btn-sm btn-primary" (click)="updateOrder()"><i class="fa fa-dot-circle-o"></i>
+                Update</button>
+            <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i>Reset</button>
+        </div>
+    </div>

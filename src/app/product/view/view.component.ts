@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ProductService } from '../../services/product.service';
+import { Product } from '../../models/product';
 
 @Component({
   selector: 'app-view',
@@ -7,18 +9,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./view.component.css']
 })
 export class ViewComponent implements OnInit {
-  products = [
-    { id: 1,
-      name: 'product p1',
-      type: 'Food',
-      unitPrice: '25',
-      currencyType: '$',
-      unitQuantity: '400',
-      siUnit: 'g'}
-  ];
-  constructor(private router: Router) { }
+  products: Product[];
+  constructor(private router: Router, private productService: ProductService) { }
 
   ngOnInit() {
+    this.productService.getProducts().subscribe(
+      data => {
+        this.products = data;
+      }, error => {
+        console.log(error);
+      }
+    );
   }
 
   detail(id) {

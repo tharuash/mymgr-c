@@ -4,7 +4,10 @@ export class Stock {
     id: string;
     product: Product;
     stockType: string;
+    productName: string;
     maximumQuantity: number;
     isAvailableOnSell: boolean;
-    currentAvailability: number;
+    availableQuantity: number;
+    unitPrice: number;
+
 }

@@ -4,13 +4,19 @@
         <small>Form</small>
     </div>
     <div class="card-body">
-        <div class="form-group">
+        <div class="form-group" *ngIf="employeeId === 0">
             <label for="name">Employee Name</label>
             <input type="text" class="form-control" (keyup)="getEmployees($event)" list="employeeNames"
                 id="employeeName" placeholder="Name" [(ngModel)]="employeeName">
             <datalist id="employeeNames">
                 <option *ngFor="let e of employeeNames" [value]="e">{{e}}</option>
             </datalist>
+        </div>
+
+        <div class="form-group" *ngIf="employeeId !== 0">
+            <label for="name">Employee Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Name" [(ngModel)]="employeeName">
+    
         </div>
 
         <div class="form-group">

@@ -34,12 +34,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let orderProdcut of orderedProducts">
-                        <td>{{orderProdcut.order.id}}</td>
-                        <td>{{orderProdcut.order.orderStartDate}}</td>
-                        <td>{{orderProdcut.requiredQuantity}}</td>
-                        <td>{{orderProdcut.subTotal}}</td>
-                        <td><span class="badge badge-primary">{{orderProdcut.order.orderStatus}}</span></td>
+                    <tr *ngFor="let o of productOrders">
+                        <td>{{o.id}}</td>
+                        <td>{{o.orderStartDate}}</td>
+                        <td>{{o.requiredQuantity}}</td>
+                        <td>{{o.subTotal}}</td>
+                        <td><span class="badge badge-primary">{{o.orderStatus}}</span></td>
 
 
                        

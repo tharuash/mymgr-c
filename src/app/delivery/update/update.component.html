@@ -1,0 +1,73 @@
+<div class="card">
+        <div class="card-header">
+            <strong>Delivery</strong>
+            <small>Form</small>
+        </div>
+        <article class="card-body">
+            <div class="row">
+                <aside class="col-md-4 border-right">
+                    <h4>Order Details</h4>
+                    <dl class="item-property">
+                        <dt>Number of Products</dt>
+                        <dd>{{order.noOfProducts}}</dd>
+                    </dl>
+    
+                    <dl class="item-property">
+                        <dt>Order Deadline</dt>
+                        <dd>{{order.orderExpirationDate}}</dd>
+                    </dl>
+    
+                    <dl class="item-property">
+                        <dt>Order Destination</dt>
+                        <dd>{{order.orderLocation}}</dd>
+                    </dl>
+                </aside>
+                <aside class="col-md-8">
+                    
+                    <!--div class="form-group">
+                        <label for="date">Delivery Date</label>
+                        <select type="text" class="form-control" id="date" [(ngModel)]="delivery.date">
+                            <option *ngFor="let p of productData" [value]="p.name">{{p.name}}</option>
+    
+                        </select>
+                    </div-->
+    
+                    <div class="form-group">
+                        <label for="type">Delivery Type</label>
+                        <select class="form-control" id="type" [(ngModel)]="delivery.deliveryType" name="type"
+                            #type="ngModel">
+                            <option value="PUBLIC_TRASNPORT">Public Transport</option>
+                            <option value="POSTAL">Postal</option>
+                            <option value="PRIVATE_VEHICLE">Public Vehicle</option>
+                            <option value="ON_HAND">On Hand</option>
+                            
+                        </select>
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="dDate">Expected Delivery Date</label>
+                        <input type="date" class="form-control" id="dDate" placeholder="Delivery Date"
+                            [(ngModel)]="delivery.deliveryDate" name="date"
+                            #date="ngModel">
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="cost">Delivery Cost</label>
+                        <input type="text" class="form-control" id="cost" placeholder="Delivery Cost"
+                            [(ngModel)]="delivery.deliveryCost" name="cost" #cost="ngModel">
+                    </div>
+    
+                    
+    
+    
+                </aside>
+    
+            </div>
+    
+        </article>
+        <div class="card-footer">
+            <button type="button" class="btn btn-sm btn-primary" (click)="updateDelivery()"><i class="fa fa-dot-circle-o"></i>
+                Update</button>
+            <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i>Reset</button>
+        </div>
+    </div>

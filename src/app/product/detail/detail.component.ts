@@ -3,6 +3,9 @@ import { Product } from '../../models/product';
 import { Order } from '../../models/order';
 import { OrderedProduct } from '../../models/ordered_products';
 import { User } from '../../models/user';
+import { ProductService } from '../../services/product.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { ProductOrder } from '../../models/product_order';
 
 @Component({
   selector: 'app-detail',
@@ -48,31 +51,29 @@ export class DetailComponent implements OnInit {
   public lineChartLegend = true;
   public lineChartType = 'line';
 
-  product = new Product();
-  orderedProducts: OrderedProduct[] = [
-    {
-      id: 1,
-     order: {
-          id: 1,
-          seller: new User(),
-          orderExpirationDate: new Date(),
-          orderStartDate: new Date(),
-          orderStartTime: new Date(),
-          price: 25,
-          currencyType: '$',
-          orderStatus: 'Delivered',
-          location: 'dddddd',
-          product: this.product
-      },
-    product: this.product,
-    requiredQuantity: 25,
-    subTotal: 650
-    }
-  ];
+  productId: number;
+  product: Product;
+  productsOrders: ProductOrder[];
 
-  constructor() { }
+  constructor(private productService: ProductService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.productId = this.route.snapshot.params.id;
+    this.productService.getProduct(this.productId).subscribe(
+      data => {
+        this.product = data;
+      }, error => {
+        console.log(error);
+      }
+    );
+
+    this.productService.getProductOrders(this.productId).subscribe(
+      data => {
+        this.productsOrders = data;
+      }, error => {
+        console.log(error);
+      }
+    );
   }
 
 

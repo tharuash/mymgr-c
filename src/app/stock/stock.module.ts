@@ -6,6 +6,8 @@ import { FormsModule} from '@angular/forms';
 import { StockRoutingModule } from './stock-routing.module';
 import { ViewComponent } from './view/view.component';
 import { UpdateComponent } from './update/update.component';
+import { StockService } from '../services/stock.service';
+import { ProductService } from '../services/product.service';
 
 
 @NgModule({
@@ -15,6 +17,7 @@ import { UpdateComponent } from './update/update.component';
     StockRoutingModule,
     HttpClientModule,
     FormsModule
-  ]
+  ],
+  providers: [StockService, ProductService]
 })
 export class StockModule { }

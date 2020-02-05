@@ -20,10 +20,10 @@
                 <tbody>
                     <tr *ngFor="let s of stock">
                         <td>{{s.id}}</td>
-                        <td>{{s.name}}</td>
+                        <td>{{s.productName}}</td>
                         <td>{{s.stockType}}</td>
                         <td>{{s.maximumQuantity}}</td>
-                        <td>{{s.currentlyAvailable}}</td>
+                        <td>{{s.availableQuantity}}</td>
                         <td><span class="badge badge-primary" *ngIf="s.isAvailableOnSell">Available</span>
                             <span class="badge badge-danger" *ngIf="!s.isAvailableOnSell">Not Available</span>
                         </td>
