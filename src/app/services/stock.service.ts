@@ -12,14 +12,14 @@ export class StockService {
   constructor(private http: HttpClient, private auth: AuthService) { }
 
   getStocks() {
-    return this.http.get<Stock[]>(`${URL}products/stocks/1`);
+    return this.http.get<Stock[]>(`${URL}/products/stocks/${this.auth.getUserId()}`);
   }
 
   getStock(id) {
-    return this.http.get<Stock>(`${URL}products/stocks/1/${id}`);
+    return this.http.get<Stock>(`${URL}/products/stocks/${this.auth.getUserId()}/${id}`);
   }
 
   updateStock(stock: Stock, id: number) {
-    return this.http.put<Stock>(`${URL}products/stocks/1/${id}`, stock);
+    return this.http.put<Stock>(`${URL}/products/stocks/${this.auth.getUserId()}/${id}`, stock);
   }
 }

@@ -5,11 +5,11 @@
     </div>
     <article class="card-body">
         <div class="row">
-            <aside class="col-md-4 border-right">
+            <aside class="col-md-6 border-right">
                 <h4>Order Details</h4>
                 <dl class="item-property">
                     <dt>Product</dt>
-                    <dd>Chocolate Box(For Gifts)</dd>
+                    <dd>{{product.name}}</dd>
                 </dl>
 
                 <div>
@@ -18,62 +18,86 @@
 
                 <dl class="item-property">
                     <dt>Unit Price</dt>
-                    <dd>$ 15</dd>
+                    <dd>{{product.currencyType}} {{product.unitPrice}}</dd>
                 </dl>
 
-                <!--dl class="item-property">
-                    <dt>Order Destination</dt>
-                    <dd>{{order.location}}</dd>
-                </dl-->
+                <dl class="item-property">
+                    <dt>Unit Quantity</dt>
+                    <dd>{{product.unitQuantity}} {{product.siUnit}}</dd>
+                </dl>
+
+
             </aside>
-            <aside class="col-md-8">
+            <aside class="col-md-6">
+                <dl class="item-property">
+                    <dt>Product Stock Type</dt>
+                    <dd>{{stock.stockType}}</dd>
+                </dl>
+
+                <dl class="item-property">
+                    <dt>Product Avalability</dt>
+                    <dd>{{stock.availableQuantity}} {{product.siUnit}}s in stock</dd>
+                </dl>
+
+                <dl class="item-property">
+                    <dt>Seller Name</dt>
+                    <dd>{{user.firstname}} {{user.lastname}}</dd>
+                </dl>
+
+                <dl class="item-property">
+                    <dt>Seller Email</dt>
+                    <dd>{{user.email}}</dd>
+                </dl>
+
+                <dl class="item-property">
+                    <dt>Seller Contact No</dt>
+                    <dd>{{user.mobile}}</dd>
+                </dl>
+
+                <dl class="item-property">
+                    <dt>Buisness Name</dt>
+                    <dd>
+                        <h5>{{user.buisnessName}}</h5>
+                    </dd>
+                </dl>
+
+                <dl class="item-property">
+                        <dt>Order Total Price</dt>
+                        <dd>
+                        {{orderedProduct.subTotal}} {{product.currencyType}}
+                        </dd>
+                    </dl>
+
                 
-                <!--div class="form-group">
-                    <label for="date">Quantity</label>
-                    <select type="" class="form-control" id="date" [(ngModel)]="delivery.date">
-                        <option *ngFor="let p of productData" [value]="p.name">{{p.name}}</option>
 
-                    </select>
-                </div-->
 
-                <!--div class="form-group">
-                    <label for="type">Delivery Type</label>
-                    <select class="form-control" id="type" [(ngModel)]="delivery.deliveryType" name="type"
-                        #type="ngModel">
-                        <option value="SALARY_PAYMENT">Cancelled</option>
-                        <option value="OTHER_PAYMENT">Delivered</option>
-                        <option value="OTHER_EARNING">Proceeding</option>
-                    </select>
-                </div-->
 
-                <div class="form-group">
-                    <label for="dDate">Quantity</label>
-                    <input type="number" class="form-control" id="dDate" placeholder="Delivery Date"
-                       >
-                </div>
 
-                <div class="form-group">
-                    <label for="cost">Destination</label>
-                    <input type="text" class="form-control" id="cost" placeholder="Delivery Cost"
-                        >
-                </div>
-
-                <div class="form-group">
-                    <label for="dDate">Expected Date</label>
-                    <input type="date" class="form-control" id="dDate" placeholder="Delivery Date"
-                       >
-                </div>
-
-                
 
 
             </aside>
 
         </div>
+        <div class="form-group">
+            <label for="dDate">Quantity</label>
+            <input type="number" class="form-control" id="dDate" placeholder="Order Quantity" [(ngModel)]="orderedProduct.requiredQuantity" (keyup)="getTotalPrice($event)" name="reqQuantity" #reqQuantity= "ngModel">
+        </div>
+
+        <div class="form-group">
+            <label for="cost">Destination</label>
+            <input type="text" class="form-control" id="cost" placeholder="Order Destination" [(ngModel)]="order.orderLocation" name="destination" #destination= "ngModel">
+        </div>
+
+        <div class="form-group">
+            <label for="dDate">Expected Date</label>
+            <input type="date" class="form-control" id="dDate" placeholder="Delivery Date" [(ngModel)]="order.orderExpirationDate" name="expDate" #expDate= "ngModel">
+        </div>
+
+
 
     </article>
     <div class="card-footer">
-        <button type="button" class="btn btn-sm btn-primary" (click)="register()"><i class="fa fa-dot-circle-o"></i>
+        <button type="button" class="btn btn-sm btn-primary" (click)="placeOrder()"><i class="fa fa-dot-circle-o"></i>
             Purchase Order</button>
         <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i>Reset</button>
     </div>

@@ -8,6 +8,8 @@ import { AddComponent } from './add/add.component';
 import { SelectComponent } from './select/select.component';
 import { DetailComponent } from './detail/detail.component';
 import { UpdateComponent } from './update/update.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenService } from '../services/token.service';
 
 
 @NgModule({
@@ -16,6 +18,13 @@ import { UpdateComponent } from './update/update.component';
     CommonModule,
     OrderRoutingModule,
     FormsModule
+  ],
+  providers: [
+    {
+      provide : HTTP_INTERCEPTORS,
+      useClass : TokenService,
+      multi: true
+    }
   ]
 })
 export class OrderModule { }

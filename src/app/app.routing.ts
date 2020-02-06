@@ -8,12 +8,14 @@ import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
+import { HomeComponent } from './home/home.component';
+import { DefaultLayoutBuyerComponent } from './buyer-container';
+import { BuyerRegisterComponent } from './buyer-register/buyer-register.component';
 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
-    pathMatch: 'full',
+    component: HomeComponent
   },
   {
     path: '404',
@@ -44,6 +46,30 @@ export const routes: Routes = [
     }
   },
   {
+    path: 'buyer/register',
+    component: BuyerRegisterComponent,
+    data: {
+      title: 'Buyer Register Page'
+    }
+  },
+  {
+    path: 'buyer',
+    component: DefaultLayoutBuyerComponent,
+    data: {
+      title: 'Buyer'
+    },
+    children: [
+      {
+        path: 'dashboard',
+        loadChildren: () => import('./dashboard/buyer/buyer.module').then(m => m.BuyerModule)
+      },
+      {
+        path: '',
+        loadChildren: () => import('./buyer/buyer.module').then(m => m.BuyerModule)
+      }
+    ]
+  },
+  {
     path: '',
     component: DefaultLayoutComponent,
     data: {
@@ -69,10 +95,6 @@ export const routes: Routes = [
       {
         path: 'delivery',
         loadChildren: () => import('./delivery/delivery.module').then(m => m.DeliveryModule)
-      },
-      {
-        path: 'b',
-        loadChildren: () => import('./buyer/buyer.module').then(m => m.BuyerModule)
       },
       {
         path: 'base',

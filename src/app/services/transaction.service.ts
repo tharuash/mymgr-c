@@ -12,18 +12,22 @@ export class TransactionService {
   constructor(private http: HttpClient, private auth: AuthService) { }
 
   addTransaction(transaction: Transaction, employeeId: number) {
-    return this.http.post<Transaction>(`${URL}/employees/transactions/1/${employeeId}`, transaction);
+    return this.http.post<Transaction>(`${URL}/employees/transactions/${this.auth.getUserId()}/${employeeId}`, transaction);
   }
 
   getTransactions() {
-    return this.http.get<Transaction[]>(`${URL}/employees/transactions/1`);
+    return this.http.get<Transaction[]>(`${URL}/employees/transactions/${this.auth.getUserId()}`);
   }
 
   getTransaction(transactionId: number) {
-    return this.http.get<Transaction>(`${URL}/employees/transactions/1/0/${transactionId}`);
+    return this.http.get<Transaction>(`${URL}/employees/transactions/${this.auth.getUserId()}/0/${transactionId}`);
+  }
+
+  getEmployeeTransactions(employeeId: number) {
+    return this.http.get<Transaction[]>(`${URL}/employees/transactions/${this.auth.getUserId()}/${employeeId}`);
   }
 
   updateTransaction(transaction: Transaction, employeeId: number) {
-    return this.http.put<Transaction>(`${URL}/employees/transactions/1/${employeeId}`, transaction);
+    return this.http.put<Transaction>(`${URL}/employees/transactions/${this.auth.getUserId()}/${employeeId}`, transaction);
   }
 }

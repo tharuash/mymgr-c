@@ -11,4 +11,7 @@ export class Product {
     siUnit: string;
     user: User;
     stock: Stock;
+    stockDto;
+    userDto;
+    requiredQuantity = 0;
 }

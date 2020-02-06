@@ -16,11 +16,13 @@ export class RegisterComponent {
   registerSeller() {
     this.user.roles = [];
     this.user.roles.push(this.role);
-    this.auth.addUser(this.user).subscribe(
+    this.auth.registerUser(this.user).subscribe(
       data => {
-        sessionStorage.setItem('id', data.id);
+        // sessionStorage.setItem('id', data.id);
         console.log(this.user);
         this.router.navigate(['dashboard']);
+      }, error => {
+        console.log(error);
       }
     );
   }

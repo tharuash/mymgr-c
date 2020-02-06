@@ -12,18 +12,18 @@ export class EmployeeService {
   constructor(private http: HttpClient, private auth: AuthService) { }
 
   getEmployees() {
-    return this.http.get<Employee[]>(`${URL}employees/1`);
+    return this.http.get<Employee[]>(`${URL}/employees/${this.auth.getUserId()}`);
   }
 
   addEmployee(employee: Employee) {
-    return this.http.post<Employee>(`${URL}employees/1`, employee);
+    return this.http.post<Employee>(`${URL}/employees/${this.auth.getUserId()}`, employee);
   }
 
   getEmployee(id) {
-    return this.http.get<Employee>(`${URL}employees/1/${id}`);
+    return this.http.get<Employee>(`${URL}/employees/${this.auth.getUserId()}/${id}`);
   }
 
   updateEmployee(employee: Employee) {
-    return this.http.put<Employee>(`${URL}employees/1`, employee);
+    return this.http.put<Employee>(`${URL}/employees/${this.auth.getUserId()}`, employee);
   }
 }
