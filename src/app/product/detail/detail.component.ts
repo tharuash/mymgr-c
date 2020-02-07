@@ -15,7 +15,7 @@ import { ProductOrder } from '../../models/product_order';
 export class DetailComponent implements OnInit {
   // lineChart
   public lineChartData: Array<any> = [
-    {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'},
+    {data: [65,44,25,48,12,45,52,32,14,12,15,12], label: 'Series A'},
   ];
   public lineChartLabels: Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
   public lineChartOptions: any = {
@@ -52,28 +52,49 @@ export class DetailComponent implements OnInit {
   public lineChartType = 'line';
 
   productId: number;
-  product: Product;
-  productsOrders: ProductOrder[];
+  product = new Product();
+  productsOrders: ProductOrder[] = [];
 
   constructor(private productService: ProductService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.productId = this.route.snapshot.params.id;
-    this.productService.getProduct(this.productId).subscribe(
+    this.productService.getProductOrders(this.productId).subscribe(
       data => {
-        this.product = data;
+        this.productsOrders = data;
+        console.log(data);
       }, error => {
         console.log(error);
       }
     );
 
-    this.productService.getProductOrders(this.productId).subscribe(
+    this.productService.getProduct(this.productId).subscribe(
       data => {
-        this.productsOrders = data;
+        this.product = data;
+
       }, error => {
         console.log(error);
       }
     );
+
+    this.productService.getProductSells(this.productId).subscribe(
+      data => {
+        let months = new Array(12);
+
+        for(let j =0 ; j<12 ; j++){
+          months[j] = new Number();
+          months[j] = 0;
+        }
+
+        data.forEach( i => {
+          months[i.month -1] = months[i.month -1] + i.requiredQuantity;
+        });
+
+        for(let k=0; k<this.lineChartData.length; k++){
+          this.lineChartData[k] = {data: months, label: 'Product Sells'};
+        }
+      }
+    )
   }
 
 

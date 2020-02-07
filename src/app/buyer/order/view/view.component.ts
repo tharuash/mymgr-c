@@ -3,6 +3,8 @@ import { OnlineOrder } from '../../../models/online_order';
 import { Router } from '@angular/router';
 import { OrderService } from '../../../services/order.service';
 import Swal from 'sweetalert2';
+import { CommentService } from '../../../services/comment.service';
+import { CommentDto } from '../../../models/comment_dto';
 
 @Component({
   selector: 'app-view',
@@ -11,7 +13,8 @@ import Swal from 'sweetalert2';
 })
 export class ViewComponent implements OnInit {
   orders: OnlineOrder[];
-  constructor(private router: Router, private orderService: OrderService) { }
+  
+  constructor(private router: Router, private orderService: OrderService, private commentService: CommentService) { }
 
   ngOnInit() {
     this.orderService.getOnlineOrders().subscribe(
@@ -22,6 +25,9 @@ export class ViewComponent implements OnInit {
       }
     );
   }
+
+
+  
 
   buyerConfirmOrder(id) {
     console.log('orderId '+id);

@@ -1,12 +1,11 @@
 <div class="card">
     <div class="card-body">
 
-
+            <div style="overflow-x:auto;">
         <table class="table table-bordered table-sm">
             <thead>
                 <tr>
                     <th>Delivery Id</th>
-                    <th>Expected Deliver Date</th>
                     <th>Cost</th>
                     <th>Type</th>
                     <th>Actions</th>                    
@@ -15,7 +14,6 @@
             <tbody>
                 <tr *ngFor="let d of deliveries">
                     <td>{{d.id}}</td>
-                    <td>{{d.deliveryDate}}</td>
                     <td>{{d.deliveryCost}}</td>
                     <td>{{d.deliveryType}}</td>
                     <td><button type="button" class="btn btn-sm btn-primary" (click)="update(d.id)"><i class="fa fa-dot-circle-o"></i>
@@ -28,6 +26,7 @@
 
             </tbody>
         </table>
+        </div>
         <!--nav>
             <ul class="pagination">
                 <li class="page-item"><a class="page-link" href="#">Prev</a></li>

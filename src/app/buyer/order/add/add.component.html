@@ -26,6 +26,13 @@
                     <dd>{{product.unitQuantity}} {{product.siUnit}}</dd>
                 </dl>
 
+                <dl class="item-property">
+                        <dt>Order Total Price</dt>
+                        <dd>
+                        {{orderedProduct.subTotal}} {{product.currencyType}}
+                        </dd>
+                    </dl>
+
 
             </aside>
             <aside class="col-md-6">
@@ -54,6 +61,15 @@
                     <dd>{{user.mobile}}</dd>
                 </dl>
 
+    
+                <dl class="item-property"  *ngIf="rate >= 0">
+                        <dt>Seller Rate</dt>
+                        <strong class="text-success">{{rate | number : '1.1-2'}} %</strong>
+                        <div class="progress progress-xs mt-2">
+                          <div class="progress-bar" role="progressbar" [ngStyle]="{width: rate+ '%'}" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                      </dl>
+
                 <dl class="item-property">
                     <dt>Buisness Name</dt>
                     <dd>
@@ -62,11 +78,13 @@
                 </dl>
 
                 <dl class="item-property">
-                        <dt>Order Total Price</dt>
-                        <dd>
-                        {{orderedProduct.subTotal}} {{product.currencyType}}
+                        <dt>Comments on seller</dt>
+                        <dd *ngFor="let c of comments">
+                            # {{c.comment}}
                         </dd>
                     </dl>
+
+                
 
                 
 

@@ -1,13 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 import { getStyle, hexToRgba } from '@coreui/coreui/dist/js/coreui-utilities';
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
+import { Order } from '../../models/order';
+import { Router } from '@angular/router';
+import { OrderService } from '../../services/order.service';
+import { CommentService } from '../../services/comment.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   templateUrl: 'dashboard.component.html'
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent {
 
-  radioModel: string = 'Month';
+  /*radioModel: string = 'Month';
 
   // lineChart1
   public lineChart1Data: Array<any> = [
@@ -230,9 +235,9 @@ export class DashboardComponent implements OnInit {
       label: 'BEP'
     }
   ];
-  /* tslint:disable:max-line-length */
+slint:disable:max-line-length
   public mainChartLabels: Array<any> = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', 'Monday', 'Thursday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-  /* tslint:enable:max-line-length */
+ tslint:enable:max-line-length
   public mainChartOptions: any = {
     tooltips: {
       enabled: false,
@@ -384,5 +389,44 @@ export class DashboardComponent implements OnInit {
       this.mainChartData2.push(this.random(80, 100));
       this.mainChartData3.push(65);
     }
+  }*/
+  unconfirmed = 0;
+  rate = 0;
+  orders: Order[] = [];
+  allOrders: Order[];
+  constructor(private router: Router, private orderService: OrderService, 
+    private commentService: CommentService, private auth:AuthService) { }
+
+  ngOnInit() {
+    this.orderService.getOrders().subscribe(
+      data => {
+        this.allOrders = data;
+        
+        this.allOrders.forEach(o => {
+          if (!o.sellerConfirmation) {
+            this.orders.push(o);
+          }
+        });
+        // console.log(this.orders);
+        this.unconfirmed = this.orders.length;
+      }, error => {
+        console.log(error);
+      }
+    );
+
+    this.commentService.getRate(+this.auth.getUserId()).subscribe(
+      data2 => {
+        if(data2){
+          this.rate = data2*20;
+        }
+      }, error => {
+    console.log(error);
+      }
+    );
+}
+
+
+  details(id) {
+    this.router.navigate(['order/details', id]);
   }
 }

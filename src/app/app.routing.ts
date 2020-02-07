@@ -96,7 +96,7 @@ export const routes: Routes = [
         path: 'delivery',
         loadChildren: () => import('./delivery/delivery.module').then(m => m.DeliveryModule)
       },
-      {
+      /*{
         path: 'base',
         loadChildren: () => import('./views/base/base.module').then(m => m.BaseModule)
       },
@@ -107,12 +107,12 @@ export const routes: Routes = [
       {
         path: 'charts',
         loadChildren: () => import('./views/chartjs/chartjs.module').then(m => m.ChartJSModule)
-      },
+      },*/
       {
         path: 'dashboard',
         loadChildren: () => import('./views/dashboard/dashboard.module').then(m => m.DashboardModule)
       },
-      {
+      /* {
         path: 'icons',
         loadChildren: () => import('./views/icons/icons.module').then(m => m.IconsModule)
       },
@@ -127,7 +127,7 @@ export const routes: Routes = [
       {
         path: 'widgets',
         loadChildren: () => import('./views/widgets/widgets.module').then(m => m.WidgetsModule)
-      }
+      }*/
     ]
   },
   { path: '**', component: P404Component }

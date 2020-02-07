@@ -13,6 +13,8 @@ import { User } from '../../../models/user';
 import { OnChange } from 'ngx-bootstrap';
 import { OnlineOrder } from '../../../models/online_order';
 import { AuthService } from '../../../services/auth.service';
+import { CommentService } from '../../../services/comment.service';
+import { CommentDto } from '../../../models/comment_dto';
 
 @Component({
   selector: 'app-add',
@@ -21,8 +23,10 @@ import { AuthService } from '../../../services/auth.service';
 })
 export class AddComponent implements OnInit {
   product =  new Product();
+  rate = 0;
   productId: number;
   order = new Order();
+  comments =  new Array<CommentDto>(2);
   orderedProduct = new OrderedProduct();
   onlineOrder = new OnlineOrder();
   stock = new Stock();
@@ -30,7 +34,8 @@ export class AddComponent implements OnInit {
   // totalPrice = 0;
   constructor(private route: ActivatedRoute, private router: Router,
      private productService: ProductService, private cd: ChangeDetectorRef,
-     private orderService: OrderService, private auth: AuthService) { }
+     private orderService: OrderService, private auth: AuthService,
+     private commentService: CommentService) { }
 
   ngOnInit() {
     this.productId = this.route.snapshot.params.id;
@@ -39,10 +44,28 @@ export class AddComponent implements OnInit {
         this.product = data;
         this.stock = this.product.stockDto;
         this.user = this.product.userDto;
+
+        this.commentService.getRate(+this.user.id).subscribe(
+          data2 => {
+            if(data2){
+              this.rate = data2*20;
+            }
+            
+          }
+        );
+
+        this.commentService.getComments(+this.user.id).subscribe(
+          data2 => {
+           this.comments = data2;
+            
+          }
+        );
       }, error => {
         console.log(error);
       }
     );
+
+    
   }
 
   getTotalPrice(event) {

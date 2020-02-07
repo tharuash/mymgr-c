@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../../models/user';
+import {ChangeDetectorRef} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../../../services/user.service';
 import { CommentService } from '../../../services/comment.service';
@@ -16,7 +17,8 @@ export class RateComponent implements OnInit {
   sellerId: number;
   commentDto = new CommentDto();
   constructor(private router: Router, private userService: UserService,
-     private route: ActivatedRoute, private commentService: CommentService) { }
+     private route: ActivatedRoute, private commentService: CommentService,
+     private cd: ChangeDetectorRef) { }
 
   ngOnInit() {
     this.sellerId = this.route.snapshot.params.id;
@@ -50,6 +52,15 @@ export class RateComponent implements OnInit {
         );
       }
     );
+  }
+
+  checkValue(event){
+    if(event.target.value > 5.0){
+      this.commentDto.rate = 0.0;
+      this.cd.detectChanges();
+    }
+
+
   }
 
 }

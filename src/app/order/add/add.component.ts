@@ -55,9 +55,15 @@ export class AddComponent implements OnInit {
   }
 
   getQuantity(event, id) {
-    const p = this.orderProducts.find(i => i.productId = id);
-    p.subTotal = event.target.value * p.unitPrice;
-    this.orderProducts.find(i => i.productId = id).subTotal = p.subTotal;
+
+    for(let i = 0; i< this.orderProducts.length; i++){
+      if(this.orderProducts[i].productId == id){
+
+        this.orderProducts[i].subTotal = event.target.value * this.orderProducts[i].unitPrice;
+      }
+    }
+    // p.subTotal = event.target.value * p.unitPrice;
+    // this.orderProducts.find(i => i.productId = id).subTotal = p.subTotal;
     let totalPrice = 0;
     this.orderProducts.forEach( i => {
       totalPrice = totalPrice + i.subTotal;

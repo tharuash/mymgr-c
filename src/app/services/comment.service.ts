@@ -18,4 +18,8 @@ export class CommentService {
   addComment(comment: CommentDto, sellerId: number) {
     return this.http.post<CommentDto>(`${URL}/comments/${sellerId}`, comment);
   }
+
+  getRate(sellerId: number) {
+    return this.http.get<any>(`${URL}/comments/${sellerId}/rate`);
+  }
 }

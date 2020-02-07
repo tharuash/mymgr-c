@@ -1,3 +1,4 @@
+<div>
 <h3>Product {{product.id}}</h3>
 <div class="card">
     <div class="row">
@@ -21,7 +22,7 @@
     <div class="card">
         <div class="card-body">
 
-
+                <div style="overflow-x:auto;">
             <table class="table table-bordered table-sm">
                 <thead>
                     <tr>
@@ -29,17 +30,17 @@
                         <th>Date</th>
                         <th>Ordered Quantity</th>
                         <th>Total Amount</th>
-                        <th>Order Status</th>
+                      
                         
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let o of productOrders">
+                    <tr *ngFor="let o of productsOrders">
                         <td>{{o.id}}</td>
                         <td>{{o.orderStartDate}}</td>
                         <td>{{o.requiredQuantity}}</td>
                         <td>{{o.subTotal}}</td>
-                        <td><span class="badge badge-primary">{{o.orderStatus}}</span></td>
+                        
 
 
                        
@@ -47,6 +48,7 @@
 
                 </tbody>
             </table>
+            </div>
             <!--nav>
                 <ul class="pagination">
                     <li class="page-item"><a class="page-link" href="#">Prev</a></li>
@@ -63,9 +65,9 @@
         <div class="card-header">
           Line Chart
           <div class="card-header-actions">
-            <!--a href="http://www.chartjs.org">
+            <a href="http://www.chartjs.org">
               <small class="text-muted">docs</small>
-            </a-->
+            </a>
           </div>
         </div>
         <div class="card-body">
@@ -82,3 +84,4 @@
           </div>
         </div>
       </div>
+</div>

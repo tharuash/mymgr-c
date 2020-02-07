@@ -8,7 +8,7 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
+  isOpen = false;
   constructor(private router: Router, private auth: AuthService) { }
 
   ngOnInit() {
@@ -29,6 +29,16 @@ export class HomeComponent implements OnInit {
 
   sellerRegister() {
     this.router.navigate(['register']);
+  }
+
+  openmenu(){
+    // console.log("workdddddd====")
+    if(!this.isOpen) {
+      this.isOpen = true;
+    } else {
+      this.isOpen = false
+    }
+    // console.log(this.isOpen)
   }
 
 

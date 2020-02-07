@@ -40,5 +40,7 @@ export class ProductService {
     return this.http.get<Product>(`${URL}/products/buy/${productId}`);
   }
 
-
+  getProductSells(id) {
+    return this.http.get<any>(`${URL}/products/${this.auth.getUserId()}/${id}/sells`);
+  }
 }

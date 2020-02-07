@@ -1,6 +1,7 @@
 import { Time } from '@angular/common';
 import { Product } from './product';
 import { User } from './user';
+import { CommentDto } from './comment_dto';
 
 export class OnlineOrder {
     id: number;
@@ -19,5 +20,7 @@ export class OnlineOrder {
     subTotal: number;
     userDto: User;
     cancellation: string;
+    sellerRatings: number;
+    latestComments = new Array<CommentDto>(2);
   }
   

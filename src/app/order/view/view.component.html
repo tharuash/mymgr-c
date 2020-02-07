@@ -1,7 +1,7 @@
 <div class="card">
     <div class="card-body">
 
-
+            <div style="overflow-x:auto;">
         <table class="table table-bordered table-sm">
             <thead>
                 <tr>
@@ -10,7 +10,6 @@
                     <th>Order Expire Date</th>
                     <th>Total Price</th>
                     <th>Location</th>
-                    <th>Order Status</th>
                     <th>Seller Confirmation</th>
                     <th>Buyer Confirmation</th>
                                        
@@ -23,7 +22,7 @@
                     <td>{{order.orderExpirationDate | date:shortDate }} </td>
                     <td>{{order.totalPrice}}</td>
                     <td>{{order.orderLocation}}</td>
-                    <td><span class="badge badge-primary">{{order.orderStatus}}</span></td>
+    
                     <td><span *ngIf="order.sellerConfirmation" class="badge badge-primary">Confirmed.</span>
                         <span *ngIf="!order.sellerConfirmation" class="badge badge-danger">Not Confirmed.</span>
                     </td>
@@ -38,6 +37,7 @@
 
             </tbody>
         </table>
+        </div>
         <!--nav>
             <ul class="pagination">
                 <li class="page-item"><a class="page-link" href="#">Prev</a></li>
