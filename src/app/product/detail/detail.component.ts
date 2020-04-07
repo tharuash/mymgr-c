@@ -97,5 +97,13 @@ export class DetailComponent implements OnInit {
     )
   }
 
+  chartClicked(event){
+
+  }
+
+  chartHovered(event){
+    
+  }
+
 
 }
